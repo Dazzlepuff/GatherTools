@@ -1,0 +1,15 @@
+Speed:
+game.setSpeedModifier(100);
+
+Teleport
+game.teleport(game.getMyPlayer().map, game.getMyPlayer().x + 0, game.getMyPlayer().y - 1, game.getMyPlayer().id)
+
+GoKartGrabber:
+let maxSteal = 1;
+let myMap = game.getMyPlayer().map;
+let gokartObjects = game.filterObjectsInMap(myMap, (obj) => obj?._name ? obj?._name == ("Go-kart") : null);
+for (let i = 0; i < gokartObjects.length && i < maxSteal; i++) {
+	let gokartID = (gokartObjects[i].id);
+	let gokartKey = (game.getObject(gokartID)).key;
+	game.interact(myMap, gokartKey);
+}
